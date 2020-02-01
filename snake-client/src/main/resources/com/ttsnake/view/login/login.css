@@ -1,0 +1,29 @@
+#rootPane {
+    -fx-background-image: url(login.jpg);
+}
+
+.text-field,.password-field {
+    -fx-background-color: #c2c2c2, #ffffff;
+    -fx-background-insets: 0 0 -1 0,0 0 0 0;
+    -fx-background-radius: 0;
+}
+
+.text-field:focused,.password-field:focused {
+    -fx-background-color: #39a0fb, #ffffff;
+    -fx-background-insets: 0 0 -1 0,0 0 0 0;
+    -fx-background-radius: 0;
+}
+
+.box{
+    -fx-background-color: #c2c2c2, #ffffff;
+    -fx-background-insets: 2,3;
+    -fx-background-radius: 2;
+}
+
+.check-box:selected .mark{
+    -fx-background-color: #39a0fb;
+}
+
+.button{
+    -fx-background-color: #39a0fb;
+}

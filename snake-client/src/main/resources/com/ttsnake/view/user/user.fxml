@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ttsnake.view.user.UserController">
+   <children>
+      <ImageView pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+         <image>
+            <Image url="@timg.jpg" />
+         </image>
+      </ImageView>
+      <Ellipse fill="DODGERBLUE" onMouseReleased="#play" opacity="0.0" radiusX="80.0" radiusY="35.0" stroke="BLACK" strokeType="INSIDE" translateX="325.0" translateY="305.0" StackPane.alignment="TOP_LEFT">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Ellipse>
+      <Text fx:id="name" fill="#d0790f" strokeType="OUTSIDE" strokeWidth="0.0" text="Test" textAlignment="CENTER" translateX="10.0" StackPane.alignment="TOP_LEFT">
+         <font>
+            <Font name="Segoe UI Black" size="36.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" height="10.0" radius="4.5" spread="1.0" width="10.0" />
+         </effect></Text>
+      <Label fx:id="level" maxHeight="-Infinity" prefHeight="18.0" text="Lv 0" textFill="#00aaff" translateX="10.0" translateY="50.0" StackPane.alignment="TOP_LEFT">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" height="5.0" radius="2.0" spread="1.0" width="5.0" />
+         </effect>
+      </Label>
+      <ProgressBar fx:id="progressBar" blendMode="ADD" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="18.0" prefWidth="150.0" progress="0.0" style="-fx-accent: blue;" translateX="60.0" translateY="50.0" StackPane.alignment="TOP_LEFT" />
+      <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="50.0" StackPane.alignment="TOP_LEFT">
+         <children>
+            <Label fx:id="usertip" textAlignment="CENTER" textFill="#ff2525">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#8a6035" height="12.1" radius="5.55" spread="0.5" width="12.1" />
+               </effect>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</StackPane>

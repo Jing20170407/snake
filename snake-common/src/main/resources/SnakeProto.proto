@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+message SnakeMessage{
+    enum DataType{
+        LoginRequest = 0;
+        LoginResponse = 1;
+        GameRequest=2;
+        GameResponse=3;
+        Single=4;
+    }
+
+    DataType data_type = 1;
+
+    oneof dataBody{
+        LoginRequest loginRequest= 2;
+        LoginResponse loginResponse= 3;
+        GameRequest gameRequest=4;
+        GameResponse gameResponse=5;
+        Single single=6;
+    }
+}
+
+//双向
+message LoginRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message LoginResponse{
+    string code = 1;//200 ok,400 bad request,401 Unauthorized
+    string sequence = 2;//返回的登录序列
+    string msg = 3;//服务端信息
+}
+
+message GameRequest{
+    string sequence = 1;
+    int32 mode= 2;//0、为经典模式，1、为多人模式，2、为道具模式
+}
+
+message GameResponse{
+    string code = 1;
+    string msg = 2;
+}
+
+//单向
+message Single{
+    string type = 1;
+    string json = 2;
+}

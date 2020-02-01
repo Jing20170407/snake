@@ -1,0 +1,19 @@
+netty:
+  server:
+    host: 192.168.1.6
+    port: 8088
+
+spring:
+  jmx:
+    enabled: false
+
+logging:
+  file:
+    path: log
+  level:
+    root: info
+
+javafx:
+  title: 贪吃蛇
+  stage:
+    resizable: false
