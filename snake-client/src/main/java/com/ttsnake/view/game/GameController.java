@@ -4,6 +4,7 @@ import com.ttsnake.SnakeClientApplication;
 import com.ttsnake.common.SnakeProto;
 import com.ttsnake.common.utils.JsonUtils;
 import com.ttsnake.common.utils.ProtoUtils;
+import com.ttsnake.common.vo.ChannelVO;
 import com.ttsnake.netty.Client;
 import com.ttsnake.view.user.UserView;
 import de.felixroske.jfxsupport.FXMLController;

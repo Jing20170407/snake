@@ -113,9 +113,9 @@ public class Game {
 
     public Integer generGrade() {
         int length = end_length-start_length;
-        Duration between = Duration.between(start_time, end_time);
-        int time = (int)between.getSeconds();
-        return length + (length*1000 / time);
+        /*Duration between = Duration.between(start_time, end_time);
+        int time = (int)between.getSeconds();*/
+        return length;
     }
 
     public String playTime() {

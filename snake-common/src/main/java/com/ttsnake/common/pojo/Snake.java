@@ -54,7 +54,6 @@ public class Snake {
 
 
     public void go() {
-        log.debug("snake go");
         //前进一步
         Point2D first = body.getFirst();
         Point2D last = null;
@@ -96,12 +95,11 @@ public class Snake {
         //是否死亡
         if (body.contain(last)) {
             death = true;
-            return;
         }
 
         //添加到body
+        log.debug("snake add");
         body.addFirst(last);
-
     }
 
     public boolean isDeath() {
@@ -129,8 +127,8 @@ public class Snake {
         }
 
         public void addFirst(Point2D point) {
-            super.addFirst(point);
             set.add(point);
+            super.addFirst(point);
         }
 
         public Point2D removeLast() {
@@ -150,7 +148,7 @@ public class Snake {
         }
 
         public int size() {
-            return set.size();
+            return super.size();
         }
 
         public HashSet<Point2D> getSet() {

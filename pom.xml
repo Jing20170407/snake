@@ -11,6 +11,7 @@
         <module>snake-common</module>
         <module>snake-server</module>
         <module>snake-client</module>
+        <module>snake-manage</module>
     </modules>
 
     <packaging>pom</packaging>

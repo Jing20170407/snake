@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class LogAspect {
-    @Pointcut("execution(* com.ttsnake.handler.*.*(..))")
+    @Pointcut("execution(* com.ttsnake.netty.handler.SnakeHandler.*(..))")
     private void pointCut() {
     }
 

@@ -134,11 +134,13 @@ public class ClassicPlayGame {
                 }
 
                 //贪吃蛇前进
+                log.debug("snake go");
                 snake.go();
 
                 //是否死亡
                 if (snake.isDeath()) {
                     //结算
+                    log.debug("snake death");
                     close(2);
                 }
             } catch (Exception e) {

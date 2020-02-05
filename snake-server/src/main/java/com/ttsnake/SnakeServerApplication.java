@@ -1,6 +1,7 @@
 package com.ttsnake;
 
 import com.ttsnake.netty.Server;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import tk.mybatis.spring.annotation.MapperScan;
+
+import java.util.HashSet;
 
 @SpringBootApplication
 @MapperScan("com.ttsnake.mapper")
@@ -20,6 +24,11 @@ public class SnakeServerApplication implements CommandLineRunner {
 
     @Autowired
     private Server server;
+
+    @Bean
+    public HashSet<Channel> channelSet() {
+        return new HashSet<>();
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(SnakeServerApplication.class, args);
@@ -36,7 +45,7 @@ public class SnakeServerApplication implements CommandLineRunner {
         });
         future.channel().closeFuture().addListener(f -> {
             if (f.isSuccess()) {
-                log.info("close connect");
+                log.info("server channel disconnect");
             }
         });
     }
