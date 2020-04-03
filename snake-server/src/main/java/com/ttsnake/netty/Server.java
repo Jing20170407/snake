@@ -20,6 +20,7 @@ import io.netty.handler.timeout.IdleStateHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.HashSet;
 import java.util.concurrent.TimeUnit;
@@ -40,12 +41,14 @@ public class Server {
 
     private NioEventLoopGroup boss;
     private NioEventLoopGroup work;
+    private NioEventLoopGroup child;
     private Channel channel;
 
     public ChannelFuture init(int port) {
         boss = new NioEventLoopGroup();
         work = new NioEventLoopGroup();
-        ChannelFuture future = null;
+        child = new NioEventLoopGroup();
+        ChannelFuture future;
         ServerBootstrap bootstrap = new ServerBootstrap();
         bootstrap
                 .group(boss,work)
@@ -54,13 +57,14 @@ public class Server {
                 .childHandler(new ChannelInitializer() {
                     @Override
                     protected void initChannel(Channel ch) throws Exception {
+                        System.out.println("initChannel");
                         ch.pipeline().addLast(new IdleStateHandler(5,0,0, TimeUnit.SECONDS));
                         ch.pipeline().addLast(new ProtobufVarint32FrameDecoder());
                         ch.pipeline().addLast(new ProtobufDecoder(SnakeProto.SnakeMessage.getDefaultInstance()));
                         ch.pipeline().addLast(new ProtobufVarint32LengthFieldPrepender());
                         ch.pipeline().addLast(new ProtobufEncoder());
                         ch.pipeline().addLast(new HeartbeatHandler());
-                        ch.pipeline().addLast(new NioEventLoopGroup(), new SnakeHandler(userHandler, gameHandler,channelSet));
+                        ch.pipeline().addLast(child, new SnakeHandler(userHandler, gameHandler,channelSet));
                     }
                 });
 

@@ -12,6 +12,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelOutboundHandlerAdapter;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.DecoderException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -113,8 +114,9 @@ public class SnakeHandler extends SimpleChannelInboundHandler<SnakeProto.SnakeMe
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        if (cause instanceof InvalidProtocolBufferException) {
-            log.info(cause.toString());
+        log.info(cause.getClass().toString());
+        if (cause instanceof DecoderException) {
+            log.error(cause.toString());
         } else {
             log.error("exceptionCaught", cause);
         }
